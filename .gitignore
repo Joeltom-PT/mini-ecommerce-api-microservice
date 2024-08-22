@@ -1,20 +1,36 @@
-# Git Ignore for Mini E-commerce API Microservice
-
-# General
+# IDE-specific files
 /.idea/
 /*.iml
 /.vscode/
 
 # Dependency directories
 /user-service/target/
-/user-service/!.mvn/wrapper/maven-wrapper.jar
-/user-service/!**/src/main/**/target/
-/user-service/!**/src/test/**/target/
+/user-service/.mvn/wrapper/maven-wrapper.jar
+/user-service/**/src/main/**/target/
+/user-service/**/src/test/**/target/
+
+/admin-service/target/
+/admin-service/.mvn/wrapper/maven-wrapper.jar
+/admin-service/**/src/main/**/target/
+/admin-service/**/src/test/**/target/
+
+/product-service/target/
+/product-service/.mvn/wrapper/maven-wrapper.jar
+/product-service/**/src/main/**/target/
+/product-service/**/src/test/**/target/
 
 # Maven wrapper files
 /user-service/mvnw
 /user-service/mvnw.cmd
 /user-service/.mvn/wrapper/maven-wrapper.properties
+
+/admin-service/mvnw
+/admin-service/mvnw.cmd
+/admin-service/.mvn/wrapper/maven-wrapper.properties
+
+/product-service/mvnw
+/product-service/mvnw.cmd
+/product-service/.mvn/wrapper/maven-wrapper.properties
 
 # STS (Spring Tool Suite)
 /user-service/.apt_generated
@@ -25,11 +41,21 @@
 /user-service/.springBeans
 /user-service/.sts4-cache
 
-# IntelliJ IDEA
-/user-service/.idea/
-/user-service/*.iws
-/user-service/*.iml
-/user-service/*.ipr
+/admin-service/.apt_generated
+/admin-service/.classpath
+/admin-service/.factorypath
+/admin-service/.project
+/admin-service/.settings
+/admin-service/.springBeans
+/admin-service/.sts4-cache
+
+/product-service/.apt_generated
+/product-service/.classpath
+/product-service/.factorypath
+/product-service/.project
+/product-service/.settings
+/product-service/.springBeans
+/product-service/.sts4-cache
 
 # NetBeans
 /user-service/nbproject/private/
@@ -38,15 +64,26 @@
 /user-service/nbdist/
 /user-service/.nb-gradle/
 /user-service/build/
-/user-service/!**/src/main/**/build/
-/user-service/!**/src/test/**/build/
+/user-service/**/src/main/**/build/
+/user-service/**/src/test/**/build/
 
-# Visual Studio Code
-/user-service/.vscode/
+/admin-service/nbproject/private/
+/admin-service/nbbuild/
+/admin-service/dist/
+/admin-service/nbdist/
+/admin-service/.nb-gradle/
+/admin-service/build/
+/admin-service/**/src/main/**/build/
+/admin-service/**/src/test/**/build/
 
-# IDE-specific files
-.idea/
-/*.iml
+/product-service/nbproject/private/
+/product-service/nbbuild/
+/product-service/dist/
+/product-service/nbdist/
+/product-service/.nb-gradle/
+/product-service/build/
+/product-service/**/src/main/**/build/
+/product-service/**/src/test/**/build/
 
 # Other files and directories
 HELP.md
