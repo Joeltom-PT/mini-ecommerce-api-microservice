@@ -19,19 +19,6 @@
 /product-service/**/src/main/**/target/
 /product-service/**/src/test/**/target/
 
-# Maven wrapper files
-/user-service/mvnw
-/user-service/mvnw.cmd
-/user-service/.mvn/wrapper/maven-wrapper.properties
-
-/admin-service/mvnw
-/admin-service/mvnw.cmd
-/admin-service/.mvn/wrapper/maven-wrapper.properties
-
-/product-service/mvnw
-/product-service/mvnw.cmd
-/product-service/.mvn/wrapper/maven-wrapper.properties
-
 # STS (Spring Tool Suite)
 /user-service/.apt_generated
 /user-service/.classpath
