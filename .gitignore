@@ -1,0 +1,52 @@
+# Git Ignore for Mini E-commerce API Microservice
+
+# General
+/.idea/
+/*.iml
+/.vscode/
+
+# Dependency directories
+/user-service/target/
+/user-service/!.mvn/wrapper/maven-wrapper.jar
+/user-service/!**/src/main/**/target/
+/user-service/!**/src/test/**/target/
+
+# Maven wrapper files
+/user-service/mvnw
+/user-service/mvnw.cmd
+/user-service/.mvn/wrapper/maven-wrapper.properties
+
+# STS (Spring Tool Suite)
+/user-service/.apt_generated
+/user-service/.classpath
+/user-service/.factorypath
+/user-service/.project
+/user-service/.settings
+/user-service/.springBeans
+/user-service/.sts4-cache
+
+# IntelliJ IDEA
+/user-service/.idea/
+/user-service/*.iws
+/user-service/*.iml
+/user-service/*.ipr
+
+# NetBeans
+/user-service/nbproject/private/
+/user-service/nbbuild/
+/user-service/dist/
+/user-service/nbdist/
+/user-service/.nb-gradle/
+/user-service/build/
+/user-service/!**/src/main/**/build/
+/user-service/!**/src/test/**/build/
+
+# Visual Studio Code
+/user-service/.vscode/
+
+# IDE-specific files
+.idea/
+/*.iml
+
+# Other files and directories
+HELP.md
