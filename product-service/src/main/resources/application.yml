@@ -1,0 +1,17 @@
+server:
+  port: 8061
+
+spring:
+  application:
+    name: PRODUCT-SERVICE
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/admin_service_db
+    username: admin_user
+    password: admin_password
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
