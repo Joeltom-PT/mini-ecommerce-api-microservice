@@ -5,13 +5,23 @@ spring:
   application:
     name: ADMIN-SERVICE
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/admin_service_db
-    username: admin_user
-    password: admin_password
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/admin_service_db
+#    username: admin_user
+#    password: admin_password
+#
+#  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
 
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone : http://localhost:8065/eureka/
+  instance:
+    hostname: localhost
