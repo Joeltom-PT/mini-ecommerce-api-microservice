@@ -44,13 +44,18 @@ public class UserServiceImpl implements UserService{
         try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(email, password));
-            final String jwtToken = "Bearer- " + jwtService.generateToken(email);
+            final String jwtToken = "Bearer " + jwtService.generateToken(email);
 
             return new ResponseEntity<>(jwtToken, HttpStatus.OK);
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
             return new ResponseEntity<>("Invalid Credential", HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @Override
+    public boolean findById(Long userId) {
+        return userRepository.findById(userId).isPresent();
     }
 
     public boolean isEmailExist(String email) {

@@ -10,4 +10,6 @@ public interface UserService {
 
 
     ResponseEntity<String> loginUser(String email, String password);
+
+    boolean findById(Long userId);
 }

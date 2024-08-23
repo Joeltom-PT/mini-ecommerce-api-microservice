@@ -6,6 +6,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.stereotype.Service;
@@ -13,12 +15,16 @@ import org.springframework.util.StringUtils;
 
 
 import java.util.Date;
+import java.util.Enumeration;
 
 @Service
 public class JwtService {
     private final String jwtSecret = "ZmFrbKapka2Y7YWprZGZqYTtsZGZrYW";
 
     private final UserRepository userRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(JwtService.class);
+
 
     @Autowired
     public JwtService(UserRepository userRepository) {
@@ -56,11 +62,13 @@ public class JwtService {
     }
 
     public String getJWTFromRequest(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
+        String bearerToken = request.getHeader("authorization");
+        logger.info("Jwt key : {}",bearerToken);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
-        return " ";
+        return null;
     }
+
 
 }

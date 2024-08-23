@@ -6,9 +6,9 @@ spring:
     name: PRODUCT-SERVICE
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/admin_service_db
-    username: admin_user
-    password: admin_password
+    url: jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:6543/postgres
+    username: postgres.avnafxmbyzdmwtehhaxp
+    password: 27Bf4bWQ1bYtJBTa
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
