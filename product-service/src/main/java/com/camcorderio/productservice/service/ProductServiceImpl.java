@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService{
                    .build();
            return ResponseEntity.ok(productDto);
         }
-        return ResponseEntity.badRequest().body("Product not find by id!");
+        return ResponseEntity.badRequest().body(null);
     }
 
     @Override

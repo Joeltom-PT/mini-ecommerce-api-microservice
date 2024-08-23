@@ -70,5 +70,12 @@ public class JwtService {
         return null;
     }
 
+    public Long getUserIdFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(jwtSecret)
+                .parseClaimsJws(token)
+                .getBody();
+        return claims.get("userId", Long.class);
+    }
 
 }

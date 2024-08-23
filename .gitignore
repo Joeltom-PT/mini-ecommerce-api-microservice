@@ -24,6 +24,11 @@
 /api-gateway/**/src/main/**/target/
 /api-gateway/**/src/test/**/target/
 
+/service-discovery/target/
+/service-discovery/.mvn/wrapper/maven-wrapper.jar
+/service-discovery/**/src/main/**/target/
+/service-discovery/**/src/test/**/target/
+
 # STS (Spring Tool Suite)
 /user-service/.apt_generated
 /user-service/.classpath
@@ -56,6 +61,14 @@
 /api-gateway/.settings
 /api-gateway/.springBeans
 /api-gateway/.sts4-cache
+
+/service-discovery/.apt_generated
+/service-discovery/.classpath
+/service-discovery/.factorypath
+/service-discovery/.project
+/service-discovery/.settings
+/service-discovery/.springBeans
+/service-discovery/.sts4-cache
 
 # NetBeans
 /user-service/nbproject/private/
@@ -93,6 +106,15 @@
 /api-gateway/build/
 /api-gateway/**/src/main/**/build/
 /api-gateway/**/src/test/**/build/
+
+/service-discovery/nbproject/private/
+/service-discovery/nbbuild/
+/service-discovery/dist/
+/service-discovery/nbdist/
+/service-discovery/.nb-gradle/
+/service-discovery/build/
+/service-discovery/**/src/main/**/build/
+/service-discovery/**/src/test/**/build/
 
 # Other files and directories
 HELP.md
