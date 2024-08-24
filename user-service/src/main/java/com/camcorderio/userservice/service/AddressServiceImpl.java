@@ -5,7 +5,9 @@ import com.camcorderio.userservice.model.Address;
 import com.camcorderio.userservice.model.User;
 import com.camcorderio.userservice.repository.AddressRepository;
 import com.camcorderio.userservice.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +52,22 @@ public class AddressServiceImpl implements AddressService {
                 .map(address -> new AddressDto(address.getId(), address.getAddress(), address.getPost()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ResponseEntity<String> deleteAddress(Long userId, Long addressId) {
+        try {
+            Address address = addressRepository.findByUserIdAndId(userId, addressId)
+                    .orElseThrow(() -> new EntityNotFoundException("Address not found"));
+
+            addressRepository.delete(address);
+            return ResponseEntity.ok("Address deleted successfully");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting the address");
+        }
+    }
+
 
 
 }

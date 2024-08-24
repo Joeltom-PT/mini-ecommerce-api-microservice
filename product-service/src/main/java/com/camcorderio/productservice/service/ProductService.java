@@ -9,4 +9,8 @@ public interface ProductService {
     ResponseEntity<?> getProductById(Long productId);
 
     ResponseEntity<?> getAllProducts();
+
+    ResponseEntity<String> editProduct(ProductDto productDto);
+
+    ResponseEntity<String> deleteProduct(Long productId);
 }

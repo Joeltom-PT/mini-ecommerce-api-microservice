@@ -61,11 +61,37 @@ public class ProductServiceImpl implements ProductService{
                 .collect(Collectors.toList());
 
         if (productDtoList.isEmpty()){
-            return ResponseEntity.badRequest().body("Products not found!");
+            return ResponseEntity.ok(null);
         }
         return ResponseEntity.ok(productDtoList);
     }
 
+    @Override
+    public ResponseEntity<String> editProduct(ProductDto productDto) {
+         try {
+             Product product = productRepository.findById(productDto.getId()).get();
+             product.setName(productDto.getName());
+             product.setDescription(productDto.getDescription());
+             product.setPrice(productDto.getPrice());
+             product.setStock(productDto.getStock());
+             productRepository.save(product);
+             return ResponseEntity.ok("Product update successful");
+         }catch (Exception e){
+
+             return ResponseEntity.badRequest().body("Something went wrong. Try again!");
+         }
+    }
+
+    @Override
+    public ResponseEntity<String> deleteProduct(Long productId) {
+        try {
+            Product product = productRepository.findById(productId).get();
+            productRepository.delete(product);
+            return ResponseEntity.ok("Product deleted successful");
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body("Something went wrong. Try again!");
+        }
+    }
 
 
 }

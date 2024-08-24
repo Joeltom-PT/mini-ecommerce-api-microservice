@@ -4,28 +4,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
-@Table(name = "user_cart")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@JsonIgnoreProperties({"user"})
-public class Cart {
+@Table(name = "order_items")
+@JsonIgnoreProperties({"order"})
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
-    private List<Long> products;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-    @Enumerated(value = EnumType.STRING)
-    private CartStatus cartStatus;
+    private Long productId;
+    private Integer quantity;
+    private Integer price;
 }

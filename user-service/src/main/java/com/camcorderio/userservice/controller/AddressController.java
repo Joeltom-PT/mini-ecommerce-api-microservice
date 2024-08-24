@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/address")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class AddressController {
 
@@ -38,6 +38,15 @@ public class AddressController {
         return ResponseEntity.ok(addresses);
     }
 
+    @DeleteMapping("/deleteAddress/{userId}/{addressId}")
+    public ResponseEntity<String> deleteAddress(@PathVariable("userId") Long userId,
+                                                @PathVariable("addressId") Long addressId){
+
+        if (!userService.findById(userId)){
+            return ResponseEntity.badRequest().body("Something went wrong!");
+        }
+        return addressService.deleteAddress(userId,addressId);
+    }
 
 
 }

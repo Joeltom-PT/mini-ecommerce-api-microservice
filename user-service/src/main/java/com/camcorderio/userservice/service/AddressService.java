@@ -10,4 +10,6 @@ public interface AddressService {
 
 
     List<AddressDto> findAllAddressByUserId(Long userId);
+
+    ResponseEntity<String> deleteAddress(Long userId, Long addressId);
 }

@@ -7,25 +7,29 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user_cart")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "user_orders")
 @JsonIgnoreProperties({"user"})
-public class Cart {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
-    private List<Long> products;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems;
+
     @Enumerated(value = EnumType.STRING)
-    private CartStatus cartStatus;
+    private OrderStatus orderStatus;
+
+    private Long addressId;
+
+    private Integer totalAmount;
 }
