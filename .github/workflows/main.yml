@@ -27,30 +27,35 @@ jobs:
         run: |
           cd user-service
           mvn clean package -DskipTests
+          mv target/user-service-*.jar target/user-service.jar
           cd ..
 
       - name: Build admin-service JAR
         run: |
           cd admin-service
           mvn clean package -DskipTests
+          mv target/admin-service-*.jar target/admin-service.jar
           cd ..
 
       - name: Build product-service JAR
         run: |
           cd product-service
           mvn clean package -DskipTests
+          mv target/product-service-*.jar target/product-service.jar
           cd ..
 
       - name: Build api-gateway JAR
         run: |
           cd api-gateway
           mvn clean package -DskipTests
+          mv target/api-gateway-*.jar target/api-gateway.jar
           cd ..
 
       - name: Build service-discovery JAR
         run: |
           cd service-discovery
           mvn clean package -DskipTests
+          mv target/service-discovery-*.jar target/service-discovery.jar
           cd ..
 
       - name: Log in to Docker Hub
