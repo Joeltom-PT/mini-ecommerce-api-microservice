@@ -9,6 +9,7 @@ import com.camcorderio.userservice.model.User;
 import com.camcorderio.userservice.repository.CartRepository;
 import com.camcorderio.userservice.repository.UserRepository;
 import feign.FeignException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class CartServiceImpl implements CartService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public ResponseEntity<?> addToCart(Long productId, Long userId) {
         ProductDto productDto = feignClientAPI.getProductById(productId);
 
@@ -60,6 +62,8 @@ public class CartServiceImpl implements CartService {
         return ResponseEntity.ok("Product added to cart successfully");
     }
 
+    @Override
+    @Transactional
     public ResponseEntity<?> getCart(Long userId) {
         Optional<Cart> optionalCart = cartRepository.findByUserId(userId);
         if (optionalCart.isEmpty()) {
@@ -81,6 +85,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional
     public ResponseEntity<?> removeItemFromCart(Long userId, Long productId) {
         Optional<Cart> optionalCart = cartRepository.findByUserId(userId);
         if (optionalCart.isEmpty()) {

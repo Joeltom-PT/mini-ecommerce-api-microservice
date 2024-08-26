@@ -5,6 +5,7 @@ import com.camcorderio.userservice.dto.ProductDto;
 import com.camcorderio.userservice.dto.UpdateOrderRequest;
 import com.camcorderio.userservice.model.*;
 import com.camcorderio.userservice.repository.*;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,8 @@ public class OrderServiceImpl implements OrderService{
     private final AddressRepository addressRepository;
     private final OrderItemRepository orderItemRepository;
 
+    @Override
+    @Transactional
     public ResponseEntity<?> orderCart(Long userId,Long addressId){
         Optional<Cart> cart = cartRepository.findByUserId(userId);
 
@@ -76,6 +79,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional
     public ResponseEntity<?> getAllOrders(Long userId) {
         List<Order> orders = orderRepository.findAllByUserId(userId);
         if (orders.isEmpty()){
@@ -85,6 +89,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional
     public ResponseEntity<?> getAllOrdersOfAllUsers() {
         List<Order> orders = orderRepository.findAll();
         if (orders.isEmpty()){
@@ -94,6 +99,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional
     public ResponseEntity<String> updateOrderRequest(UpdateOrderRequest updateOrderRequest) {
         Optional<Order> order = orderRepository.findById(updateOrderRequest.getOrderId());
         if (!order.isPresent()) {

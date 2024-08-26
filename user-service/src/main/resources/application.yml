@@ -36,15 +36,15 @@ spring:
           lob:
             handler: org.hibernate.type.descriptor.jdbc.LobStorageStrategy
 
-  sql:
-    init:
-      mode: always  # or 'never' depending on your requirements
-    schema:
-      import:
-        - classpath:/db/schema.sql  # Path to your schema initialization SQL file
-    data:
-      import:
-        - classpath:/db/data.sql  # Path to your data initialization SQL file
+#  sql:
+#    init:
+#      mode: always  # or 'never' depending on your requirements
+#    schema:
+#      import:
+#        - classpath:/db/schema.sql  # Path to your schema initialization SQL file
+#    data:
+#      import:
+#        - classpath:/db/data.sql  # Path to your data initialization SQL file
 
   logging:
     level:

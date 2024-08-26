@@ -6,6 +6,8 @@ import com.camcorderio.userservice.model.User;
 import com.camcorderio.userservice.repository.AddressRepository;
 import com.camcorderio.userservice.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Transient;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
     private final UserRepository userRepository;
     @Override
+    @Transactional
     public ResponseEntity<String> createAddress(Long userId, AddressDto addressDto) throws IllegalArgumentException {
 
         if (!userService.findById(userId)) {
@@ -46,6 +49,8 @@ public class AddressServiceImpl implements AddressService {
         return ResponseEntity.ok("Address created successfully!");
     }
 
+    @Override
+    @Transactional
     public List<AddressDto> findAllAddressByUserId(Long userId) {
         List<Address> addresses = addressRepository.findByUserId(userId);
         return addresses.stream()
@@ -54,6 +59,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    @Transactional
     public ResponseEntity<String> deleteAddress(Long userId, Long addressId) {
         try {
             Address address = addressRepository.findByUserIdAndId(userId, addressId)

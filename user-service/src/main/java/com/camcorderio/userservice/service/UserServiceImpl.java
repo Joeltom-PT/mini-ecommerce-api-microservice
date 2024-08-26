@@ -5,6 +5,7 @@ import com.camcorderio.userservice.mapper.UserMapper;
 import com.camcorderio.userservice.model.User;
 import com.camcorderio.userservice.repository.UserRepository;
 import com.camcorderio.userservice.service.jwt.JwtService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +25,13 @@ public class UserServiceImpl implements UserService{
     private final AuthenticationManager authenticationManager;
 
     @Override
+    @Transactional
     public boolean findUserByEmail(String email) {
         return userRepository.findByEmail(email).isPresent();
     }
 
     @Override
+    @Transactional
     public void saveUser(UserDto userDto) {
         User user = UserMapper.mapToUser(userDto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -36,6 +39,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public ResponseEntity<String> loginUser(String email, String password) {
 
         if (!isEmailExist(email)) {
@@ -54,9 +58,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public boolean findById(Long userId) {
         return userRepository.findById(userId).isPresent();
     }
+
 
     public boolean isEmailExist(String email) {
         return userRepository.existsByEmail(email);
